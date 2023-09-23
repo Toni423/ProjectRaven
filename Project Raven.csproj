@@ -5,6 +5,10 @@
     <RootNamespace>ProjectRaven</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="assets\src\currency_handling\Bank.gd" />
+    <Content Include="assets\src\camera\DragableCamera.gd" />
+    <Content Include="assets\src\ravens\UIControl.gd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\resources\" />
   </ItemGroup>
 </Project>

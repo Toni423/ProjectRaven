@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpy5h4dtqjj7a"]
+
+[ext_resource type="PackedScene" uid="uid://7qqj0o6f781b" path="res://assets/scenes/RavenUI/SkillUI.tscn" id="1_6gm80"]
+[ext_resource type="Script" path="res://assets/src/ravens/UIControl.gd" id="1_8vf7k"]
+
+[node name="RavenMenu" type="Control" node_paths=PackedStringArray("money", "strengthLevel", "intelligenceLevel", "constitutionLevel", "perceptionLevel", "craftingLevel", "dexterityLevel", "strengthCost", "intelligenceCost", "constitutionCost", "perceptionCost", "craftingCost", "dexterityCost")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 768.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8vf7k")
+money = NodePath("ColorRect/VBoxContainer/HBoxContainer/Money")
+strengthLevel = NodePath("ColorRect/VBoxContainer/VBoxContainer/Strength/Level")
+intelligenceLevel = NodePath("ColorRect/VBoxContainer/VBoxContainer/Intelligence/Level")
+constitutionLevel = NodePath("ColorRect/VBoxContainer/VBoxContainer/Constitution/Level")
+perceptionLevel = NodePath("ColorRect/VBoxContainer/VBoxContainer/Perception/Level")
+craftingLevel = NodePath("ColorRect/VBoxContainer/VBoxContainer/Crafting/Level")
+dexterityLevel = NodePath("ColorRect/VBoxContainer/VBoxContainer/Dexterity/Level")
+strengthCost = NodePath("ColorRect/VBoxContainer/VBoxContainer/Strength/Price")
+intelligenceCost = NodePath("ColorRect/VBoxContainer/VBoxContainer/Intelligence/Price")
+constitutionCost = NodePath("ColorRect/VBoxContainer/VBoxContainer/Constitution/Price")
+perceptionCost = NodePath("ColorRect/VBoxContainer/VBoxContainer/Perception/Price")
+craftingCost = NodePath("ColorRect/VBoxContainer/VBoxContainer/Crafting/Price")
+dexterityCost = NodePath("ColorRect/VBoxContainer/VBoxContainer/Dexterity/Price")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 448.0
+color = Color(0.247059, 0.247059, 0.247059, 0.670588)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 448.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Name" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 29
+text = "Raven1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Money" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.43
+
+[node name="Strength" parent="ColorRect/VBoxContainer/VBoxContainer" instance=ExtResource("1_6gm80")]
+layout_mode = 2
+
+[node name="SkillName" parent="ColorRect/VBoxContainer/VBoxContainer/Strength" index="1"]
+text = "  Strength: "
+
+[node name="Intelligence" parent="ColorRect/VBoxContainer/VBoxContainer" instance=ExtResource("1_6gm80")]
+layout_mode = 2
+
+[node name="Constitution" parent="ColorRect/VBoxContainer/VBoxContainer" instance=ExtResource("1_6gm80")]
+layout_mode = 2
+
+[node name="SkillName" parent="ColorRect/VBoxContainer/VBoxContainer/Constitution" index="1"]
+text = "  Constitution: "
+
+[node name="Perception" parent="ColorRect/VBoxContainer/VBoxContainer" instance=ExtResource("1_6gm80")]
+layout_mode = 2
+
+[node name="SkillName" parent="ColorRect/VBoxContainer/VBoxContainer/Perception" index="1"]
+text = "  Perception: "
+
+[node name="Crafting" parent="ColorRect/VBoxContainer/VBoxContainer" instance=ExtResource("1_6gm80")]
+layout_mode = 2
+
+[node name="SkillName" parent="ColorRect/VBoxContainer/VBoxContainer/Crafting" index="1"]
+text = "  Crafting: "
+
+[node name="Dexterity" parent="ColorRect/VBoxContainer/VBoxContainer" instance=ExtResource("1_6gm80")]
+layout_mode = 2
+
+[node name="SkillName" parent="ColorRect/VBoxContainer/VBoxContainer/Dexterity" index="1"]
+text = "  Dexterity: "
+
+[node name="VSeparator" type="VSeparator" parent="ColorRect/VBoxContainer"]
+light_mask = 0
+visibility_layer = 0
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.55
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/VBoxContainer/Strength/Buy" to="." method="upgrade_strength"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/VBoxContainer/Intelligence/Buy" to="." method="upgrade_intelligence"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/VBoxContainer/Constitution/Buy" to="." method="upgrade_constitution"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/VBoxContainer/Perception/Buy" to="." method="upgrade_perception"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/VBoxContainer/Crafting/Buy" to="." method="upgrade_crafting"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/VBoxContainer/Dexterity/Buy" to="." method="upgrade_dexterity"]
+
+[editable path="ColorRect/VBoxContainer/VBoxContainer/Strength"]
+[editable path="ColorRect/VBoxContainer/VBoxContainer/Intelligence"]
+[editable path="ColorRect/VBoxContainer/VBoxContainer/Constitution"]
+[editable path="ColorRect/VBoxContainer/VBoxContainer/Perception"]
+[editable path="ColorRect/VBoxContainer/VBoxContainer/Crafting"]
+[editable path="ColorRect/VBoxContainer/VBoxContainer/Dexterity"]

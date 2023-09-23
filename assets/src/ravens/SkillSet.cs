@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ProjectRaven.assets.src.currency_handling;
 
 namespace ProjectRaven.assets.src.ravens;
 
@@ -24,12 +25,16 @@ public class SkillSet {
         skills.Add(SkillNames.DEXTERITY, new Skill(dexterity));
     }
 
-    public void upgrade_skill(SkillNames name) {
-        skills[name].upgrade();
+    public bool upgrade_skill(SkillNames name, Bank bank) {
+        return skills[name].upgrade(bank);
     }
 
     public int get_level(SkillNames name) {
         return skills[name].get_level();
+    }
+
+    public double get_price(SkillNames name) {
+        return skills[name].get_upgrade_price();
     }
 
 }

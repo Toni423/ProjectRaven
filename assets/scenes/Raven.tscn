@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://tcwq7pa2kcf5"]
+
+[ext_resource type="Script" path="res://assets/src/ravens/Raven.cs" id="1_f1dk3"]
+[ext_resource type="Texture2D" uid="uid://dhc3sdraw8jmq" path="res://assets/Sprites/Raven.webp" id="1_wbfut"]
+[ext_resource type="PackedScene" uid="uid://cpy5h4dtqjj7a" path="res://assets/scenes/RavenUI/RavenMenu.tscn" id="2_jo84h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgdtp"]
+radius = 23.0
+height = 78.0
+
+[node name="Raven" type="CharacterBody2D" node_paths=PackedStringArray("menu") groups=["Raven"]]
+scale = Vector2(0.3, 0.3)
+input_pickable = true
+script = ExtResource("1_f1dk3")
+menu = NodePath("RavenMenu")
+
+[node name="RavenMenu" parent="." instance=ExtResource("2_jo84h")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wbfut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -6)
+shape = SubResource("CapsuleShape2D_qgdtp")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
